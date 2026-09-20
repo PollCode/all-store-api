@@ -1,5 +1,5 @@
-from sqlmodel import Session, create_engine
-from core.config import settings
+from sqlmodel import SQLModel, Session, create_engine
+from ..core.config import settings
 
 # Motor de base de datos (PostgreSQL)
 engine = create_engine(
@@ -7,6 +7,11 @@ engine = create_engine(
     pool_pre_ping=True,   # Verifica que las conexiones estén activas antes de usarlas
     echo=False,           # Cambia a True para ver SQL en consola (debug)
 )
+
+def init_db():
+    # ⚠️ ELIMINA TODOS LOS DATOS EXISTENTES
+    # SQLModel.metadata.drop_all(engine)  
+    SQLModel.metadata.create_all(engine,checkfirst=True)
 
 def get_session():
     """
