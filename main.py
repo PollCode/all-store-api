@@ -1,7 +1,13 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 from .core.database import init_db
 from .core.config import settings
+from .api.v1.endpoints.users import router as user_router
+from core.rate_limit import limiter
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -20,6 +26,15 @@ app = FastAPI(
     
 )
 
-@app.get('/health')
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Middlewares
+app.add_middleware(SlowAPIMiddleware)
+
+# Routers
+app.include_router(user_router, prefix="/api/v1")
+
+@app.get('/api/v1/health')
 def health_check():
     return {"status": "OK", }
