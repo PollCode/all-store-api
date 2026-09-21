@@ -3,7 +3,7 @@ from ..core.config import settings
 
 # Motor de base de datos (PostgreSQL)
 engine = create_engine(
-    settings.DATABASE_URL,
+    settings.DB_URL,
     pool_pre_ping=True,   # Verifica que las conexiones estén activas antes de usarlas
     echo=False,           # Cambia a True para ver SQL en consola (debug)
 )

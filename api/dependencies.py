@@ -1,9 +1,9 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlmodel import Session
-from core.database import get_session as get_db
-from core.security import decode_access_token
-from models.user import User
+from ..core.database import get_session as get_db
+from ..core.security import decode_access_token
+from ..models.users import User
 import uuid
 
 # Esquema OAuth2 para extraer el token del header Authorization

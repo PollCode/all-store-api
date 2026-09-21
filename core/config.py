@@ -14,10 +14,7 @@ class Settings(BaseSettings):
     ALGORITHM: str = os.getenv('ALGORITHM')
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES'))
     BASE_URL: str = os.getenv('BASE_URL')
-    
-    @property
-    def DATABASE_URL(self) -> str:
-        return f"postgresql+psycopg2://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+    DB_URL: str = os.getenv('DB_URL')
     
     class Config:
         env_file = ".env"
