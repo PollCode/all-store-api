@@ -1,7 +1,7 @@
 """Tests para GET /api/v1/users"""
 import pytest
 
-from ...tests.factories import make_user
+from tests.factories import make_user
 
 pytestmark = pytest.mark.users
 

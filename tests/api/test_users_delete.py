@@ -5,7 +5,7 @@ import pytest
 from sqlmodel import Session
 
 from models.users import User
-from ...tests.factories import make_user
+from tests.factories import make_user
 
 pytestmark = pytest.mark.users
 

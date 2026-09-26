@@ -47,3 +47,6 @@ markers = [
     "auth: authentication tests",
     "users: user CRUD tests",
 ]
+
+[tool.fastapi]
+entrypoint = "main:app"

@@ -1,7 +1,7 @@
 """Tests para POST /api/v1/auth/logout"""
 import pytest
 
-from ...tests.factories import make_access_token, make_refresh_token, make_user
+from tests.factories import make_access_token, make_refresh_token, make_user
 
 pytestmark = pytest.mark.auth
 

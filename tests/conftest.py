@@ -24,7 +24,7 @@ from sqlalchemy.pool import StaticPool
 from sqlmodel import Session, SQLModel, create_engine
 from main import app
 
-from core.database import get_db
+from core.database import get_session as get_db
 from core.rate_limit import limiter
 
 # ------------------------------------------------------------------
@@ -88,7 +88,7 @@ def client(db: Session) -> Generator[TestClient, None, None]:
 # ------------------------------------------------------------------
 # Factories
 # ------------------------------------------------------------------
-from ..tests.factories import make_access_token, make_user  # noqa: E402
+from tests.factories import make_access_token, make_user  # noqa: E402
 
 
 @pytest.fixture
