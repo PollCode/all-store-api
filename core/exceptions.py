@@ -82,8 +82,8 @@ class ConflictError(AppException):
 
 
 class UnprocessableEntityError(AppException):
-    status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
-    error_type = "unprocessable_entity"
+    status_code = status.HTTP_422_UNPROCESSABLE_CONTENT
+    error_type = "unprocessable_content"
     default_message = "The provided data could not be processed"
 
 

@@ -1,7 +1,7 @@
 from typing import Optional, Type
 from pydantic import BaseModel, ConfigDict
-from sqlmodel import SQLModel, Select
-
+from sqlmodel import SQLModel
+from sqlalchemy import Select
 
 class BaseFilter(BaseModel):
     """

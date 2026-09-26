@@ -4,8 +4,8 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlmodel import Session
 
-from api.dependencies import get_current_active_user, get_db, require_admin
-from core.rate_limit import limiter
+from ...dependencies import get_current_active_user, get_db, require_admin
+from ....core.rate_limit import limiter
 from ....models.users import User
 from ....common.schemas import PaginatedResponse, PaginationParams
 from ....filters.users import UserFilter

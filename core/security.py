@@ -4,7 +4,7 @@ from typing import Optional
 from argon2 import PasswordHasher
 from argon2.exceptions import VerificationError, InvalidHashError
 
-from core.config import settings
+from ..core.config import settings
 
 # Instancia global de PasswordHasher de argon2
 ph = PasswordHasher()

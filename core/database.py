@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, Session, create_engine
-from ..core.config import settings
+from .config import settings
 
 # Motor de base de datos (PostgreSQL)
 engine = create_engine(

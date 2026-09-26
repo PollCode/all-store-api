@@ -6,7 +6,7 @@ from slowapi.middleware import SlowAPIMiddleware
 from .core.database import init_db
 from .core.config import settings
 from .api.v1.endpoints.users import router as user_router
-from core.rate_limit import limiter
+from .core.rate_limit import limiter
 
 
 @asynccontextmanager

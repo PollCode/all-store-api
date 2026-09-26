@@ -1,5 +1,6 @@
-from sqlmodel import SQLModel, Select
 from typing import Optional, Type
+from sqlalchemy import Select
+from sqlmodel import SQLModel
 from ..common.filters import BaseFilter
 
 
@@ -8,7 +9,7 @@ class UserFilter(BaseFilter):
     full_name: Optional[str] = None
     role: Optional[str] = None
     is_active: Optional[bool] = None
-    search: Optional[str] = None  # busca en email o full_name
+    search: Optional[str] = None
     order_by_field: str = "created_at"
     order_desc: bool = True
 
