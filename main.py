@@ -6,6 +6,7 @@ from slowapi.middleware import SlowAPIMiddleware
 from .core.database import init_db
 from .core.config import settings
 from .api.v1.endpoints.users import router as user_router
+from .api.v1.endpoints.auth import router as auth_router
 from .core.rate_limit import limiter
 
 
@@ -34,6 +35,7 @@ app.add_middleware(SlowAPIMiddleware)
 
 # Routers
 app.include_router(user_router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
 
 @app.get('/api/v1/health')
 def health_check():
