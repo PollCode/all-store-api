@@ -2,11 +2,11 @@ import uuid
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlmodel import Session
-from ..repositories.token import RevokedAccessTokenRepository
-from ..core.exceptions import UnauthorizedError
-from ..core.database import get_session as get_db
-from ..core.security import decode_access_token
-from ..models.users import User
+from repositories.token import RevokedAccessTokenRepository
+from core.exceptions import UnauthorizedError
+from core.database import get_session as get_db
+from core.security import decode_access_token
+from models.users import User
 
 # Esquema OAuth2 para extraer el token del header Authorization
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")

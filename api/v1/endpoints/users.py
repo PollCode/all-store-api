@@ -4,12 +4,12 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlmodel import Session
 
-from ...dependencies import get_current_active_user, get_db, require_admin
-from ....core.rate_limit import limiter
-from ....models.users import User
-from ....common.schemas import PaginatedResponse, PaginationParams
-from ....filters.users import UserFilter
-from ....schemas.users import (
+from api.dependencies import get_current_active_user, get_db, require_admin
+from core.rate_limit import limiter
+from models.users import User
+from common.schemas import PaginatedResponse, PaginationParams
+from filters.users import UserFilter
+from schemas.users import (
     UserBulkCreateResponse,
     UserBulkUpdate,
     UserBulkUpdateResponse,
@@ -17,7 +17,7 @@ from ....schemas.users import (
     UserRead,
     UserUpdate,
 )
-from ....services.users import UserService
+from services.users import UserService
 
 router = APIRouter(prefix="/users", tags=["users"])
 

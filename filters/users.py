@@ -1,7 +1,7 @@
 from typing import Optional, Type
 from sqlalchemy import Select
 from sqlmodel import SQLModel
-from ..common.filters import BaseFilter
+from common.filters import BaseFilter
 
 
 class UserFilter(BaseFilter):

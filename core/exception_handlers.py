@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from ..core.exceptions import AppException, ConflictError, UnprocessableEntityError
+from core.exceptions import AppException, ConflictError, UnprocessableEntityError
 
 logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 import uuid
 from typing import Generic, Optional, Sequence, Tuple, Type, TypeVar
 from sqlmodel import Session, SQLModel, func, select
-from ..common.schemas import PaginationParams
-from ..common.filters import BaseFilter
+from common.schemas import PaginationParams
+from common.filters import BaseFilter
 
 ModelT = TypeVar("ModelT", bound=SQLModel)
 

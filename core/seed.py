@@ -2,9 +2,9 @@ import logging
 
 from sqlmodel import Session, select
 
-from ..core.config import settings
-from ..core.security import hash_password
-from ..models.users import User
+from core.config import settings
+from core.security import hash_password
+from models.users import User
 
 logger = logging.getLogger(__name__)
 

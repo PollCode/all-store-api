@@ -1,5 +1,5 @@
 from sqlmodel import Field
-from ..common.models import BaseModel
+from common.models import BaseModel
 
 
 class User(BaseModel, table=True):

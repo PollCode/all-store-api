@@ -1,7 +1,7 @@
 from typing import Optional
 from sqlmodel import select
-from ..models.users import User
-from ..common.repositories import BaseRepository
+from models.users import User
+from common.repositories import BaseRepository
 
 
 class UserRepository(BaseRepository[User]):
