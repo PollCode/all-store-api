@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from core.exceptions import AppException, ConflictError, UnprocessableEntityError
+from ..core.exceptions import AppException, ConflictError, UnprocessableEntityError
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +46,7 @@ def register_exception_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(StarletteHTTPException)
     async def http_exception_handler(request: Request, exc: StarletteHTTPException):
-        from core.exceptions import AppException as _AppException
+        from ..core.exceptions import AppException as _AppException
 
         wrapped = _AppException(
             message=str(exc.detail),
@@ -62,7 +62,7 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(Exception)
     async def unhandled_exception_handler(request: Request, exc: Exception):
         logger.exception("Unhandled exception on %s %s", request.method, request.url.path)
-        from core.exceptions import InternalServerError
+        from ..core.exceptions import InternalServerError
 
         wrapped = InternalServerError()
         return JSONResponse(status_code=wrapped.status_code, content=wrapped.to_dict())

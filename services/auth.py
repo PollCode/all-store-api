@@ -4,19 +4,19 @@ from typing import Optional
 from fastapi import Request
 from sqlmodel import Session
 
-from core.config import settings
-from core.exceptions import UnauthorizedError
-from core.security import (
+from ..core.config import settings
+from ..core.exceptions import UnauthorizedError
+from ..core.security import (
     create_access_token,
     create_refresh_token,
     decode_access_token,
     decode_refresh_token,
     verify_password,
 )
-from models.token import RefreshToken, RevokedAccessToken
-from repositories.token import RefreshTokenRepository, RevokedAccessTokenRepository
-from repositories.users import UserRepository
-from schemas.auth import TokenResponse
+from ..models.token import RefreshToken, RevokedAccessToken
+from ..repositories.token import RefreshTokenRepository, RevokedAccessTokenRepository
+from ..repositories.users import UserRepository
+from ..schemas.auth import TokenResponse
 
 
 class AuthService:
@@ -60,8 +60,11 @@ class AuthService:
         self, email: str, password: str, request: Optional[Request] = None
     ) -> TokenResponse:
         user = self.users.get_by_email(email)
-        if not user or not verify_password(password, user.password_hash):
-            raise UnauthorizedError(message="Invalid email or password")
+        print(user)
+        if not user:
+            raise UnauthorizedError(message="Invalid email")
+        if not verify_password(password, user.password_hash):
+            raise UnauthorizedError(message="Invalid password")
         if not user.is_active:
             raise UnauthorizedError(message="User account is inactive")
         return self._issue_tokens(user, request)

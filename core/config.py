@@ -14,6 +14,14 @@ class Settings(BaseSettings):
     SECRET_KEY: str = os.getenv('SECRET_KEY')
     ALGORITHM: str = os.getenv('ALGORITHM')
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES'))
+    REFRESH_TOKEN_EXPIRE_MINUTES: int = int(os.getenv('REFRESH_TOKEN_EXPIRE_MINUTES')) * 24 * 7
+
+    # --- Admin por defecto ---
+    DEFAULT_ADMIN_EMAIL: str = os.getenv('DEFAULT_ADMIN_EMAIL')
+    DEFAULT_ADMIN_PASSWORD: str = os.getenv('DEFAULT_ADMIN_PASSWORD')
+    DEFAULT_ADMIN_FULL_NAME: str = os.getenv('DEFAULT_ADMIN_FULL_NAME')
+    CREATE_DEFAULT_ADMIN: bool = bool(os.getenv('CREATE_DEFAULT_ADMIN'))
+    
     BASE_URL: str = os.getenv('BASE_URL')
     
     class Config:

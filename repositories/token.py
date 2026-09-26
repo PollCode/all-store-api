@@ -4,8 +4,8 @@ from typing import Optional
 
 from sqlmodel import select
 
-from models.token import RefreshToken, RevokedAccessToken
-from common.repositories import BaseRepository
+from ..models.token import RefreshToken, RevokedAccessToken
+from ..common.repositories import BaseRepository
 
 
 class RefreshTokenRepository(BaseRepository[RefreshToken]):

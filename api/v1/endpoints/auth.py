@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Depends, Request, status
 from sqlmodel import Session
 
-from api.dependencies import get_current_active_user, get_db, oauth2_scheme
-from core.rate_limit import limiter
-from models.users import User
-from schemas.auth import (
+from ...dependencies import get_current_active_user, get_db, oauth2_scheme
+from ....core.rate_limit import limiter
+from ....models.users import User
+from ....schemas.auth import (
     LoginRequest,
     LogoutRequest,
     RefreshRequest,
     TokenResponse,
 )
-from services.auth import AuthService
+from ....services.auth import AuthService
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 

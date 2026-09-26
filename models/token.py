@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime
 from typing import Optional
 from sqlmodel import Field
-from common.models import BaseModel
+from ..common.models import BaseModel
 
 
 class RefreshToken(BaseModel, table=True):
