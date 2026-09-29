@@ -1,12 +1,12 @@
+import api.dependencies
 import logging
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from contextlib import asynccontextmanager
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
-from sqlmodel import Session
-from core.database import init_db
-from core.config import settings
+from sqlmodel import Session, text
+from core.database import init_db, get_session as get_db
 from core.seed import create_default_admin
 from core.rate_limit import limiter
 from core.database import engine
@@ -60,5 +60,9 @@ app.include_router(user_router, prefix="/api/v1")
 app.include_router(auth_router, prefix="/api/v1")
 
 @app.get('/api/v1/health')
-def health_check():
-    return {"status": "OK", }
+def health_check(db: Session = Depends(get_db)):
+    try:
+        db.exec(text("SELECT 1"))
+        return {"status": "ok", "database": "up"}
+    except Exception:
+        return {"status": "degraded", "database": "down"}

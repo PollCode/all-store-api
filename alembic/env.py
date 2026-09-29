@@ -8,6 +8,9 @@ from sqlmodel import SQLModel
 from alembic import context
 from dotenv import load_dotenv
 
+from core.config import settings
+import models  # noqa: F401  ← registra todos los modelos
+
 load_dotenv()
 
 # this is the Alembic Config object, which provides
@@ -19,8 +22,8 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
     
-database_url = os.getenv('DB_URL')
-
+database_url = str(settings.DATABASE_URL)
+database_url = database_url.replace("%", "%%")
 config.set_main_option("sqlalchemy.url", database_url)
 
 # add your model's MetaData object here
